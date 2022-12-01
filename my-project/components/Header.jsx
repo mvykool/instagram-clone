@@ -55,7 +55,10 @@ const Header = () => {
          <PaperAirplaneIcon className='nav-btn' />
           <div className='absolute bg-red-500 rounded-full animate-pulse -top-1 -right-2 text-xs w-5 h-5 text-white flex items-center justify-center'>3</div>
        </div>
-       <PlusCircleIcon className='nav-btn' />
+
+       {/**modal  using recoil*/}
+
+       <PlusCircleIcon onClick={() => setOpen(true)}  className='nav-btn' />
        <UserGroupIcon className='nav-btn' />
        <HeartIcon className='nav-btn' />
 
