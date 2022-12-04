@@ -11,9 +11,9 @@ const Feed = ({user}) => {
  
 
   return (
-    <main className={ `bg-app grid grid-cols-1 md:grid-cols-2 md:max-w-3xl xl:grid-cols-3 xl:max-w-6xl mx-auto ${!user && "!grid-cols-1 !max-w-3xl"}`}>
+    <main className={ `bg-app grid grid-cols-1 md:grid-cols-4 md:max-w-3xl xl:grid-cols-4 xl:max-w-5xl mx-auto ${!user && "!grid-cols-1 !max-w-3xl"}`}>
        {/**section */}
-       <section className='col-span-2'>
+       <section className='col-span-4'>
          {/**stories */}
          <Stories user={user}/>
      
@@ -25,10 +25,10 @@ const Feed = ({user}) => {
         
      {/**section */}
   
-      <section className='hidden xl:inline-grid md:col-span-1'>
+      <section className='hidden xl:inline-grid md:col-span-1 ml-20'>
       {/**mini profile */}
 
-     <div className='fixed top-20'>
+     <div className='fixed top-20 right-8'>
      <MiniProfile user={user}/>
       {/**suggestions */}
       <Suggestions/>

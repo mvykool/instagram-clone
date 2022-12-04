@@ -54,8 +54,8 @@ const Post = ({ id, username, userImg, img, caption}) => {
 
     await addDoc(collection(db, "posts", id, "comments"), {
         comment: commentToSend,
-        username: session.user.username,
-        userImage: session.user.image,
+        username: user.displayName,
+        userImage:  user.photoURL ? user.photoURL : "https://cdn-icons-png.flaticon.com/512/6073/6073873.png",
         timestamp: serverTimestamp(), 
     });
   };
@@ -76,12 +76,12 @@ const Post = ({ id, username, userImg, img, caption}) => {
   return (
     <>
     { user && (
-        <div className='bg-white my-7 px-5 mx-3 rounded-lg shadow-lg'>
+        <div className='bg-white my-7 px-5 mx-3 xl:mx-28 rounded-lg shadow-lg'>
         {/**header */}
 
         <div className='flex items-center p-5'>
             <img alt='pic' src={userImg} className="rounded-full h-10 w-10 object-contain  mr-3"/>
-            <p className='flex-1 font-bold'>{username}</p>
+            <p className='flex-1 font-bold'>{username ? username : "Demo User"}</p>
             <DotsHorizontalIcon className='h-5' />
         </div>
 
@@ -115,7 +115,7 @@ const Post = ({ id, username, userImg, img, caption}) => {
                 <p className='font-bold -mt-4 mb-4'>{likes.length} Likes</p>
             )}
 
-            <span className='font-bold mr-1'>{username}</span>
+            <span className='font-bold mr-1'>{user.displayName ? user.displayName : "Demo User"}</span>
             <span>{caption}</span>
         </p>
         {/**comments */}
@@ -129,7 +129,7 @@ const Post = ({ id, username, userImg, img, caption}) => {
                         alt="profile-img"
                         />
                       <p className='text-sm flex-1'> 
-                        <span className='font-bold'>{comment.data().username}</span>{ " "}
+                        <span className='font-bold'>{comment.data().username ? username : "Demo User"}</span>{ " "}
                         {comment.data().comment}
                       </p>
 

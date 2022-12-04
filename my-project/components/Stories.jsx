@@ -31,8 +31,8 @@ const Stories = ({user}) => {
       {/**story */}
       {user && (
         <Story
-         img={user.photoURL}
-        username={user.displayName}
+         img={user.photoURL ? user.photoURL : "https://cdn-icons-png.flaticon.com/512/6073/6073873.png"}
+        username={user.displayName ? user.displayName : "Demo User"}
         />
       )}
 

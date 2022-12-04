@@ -22,7 +22,7 @@ const Header = ({user}) => {
 
 
   return (
- <div className='shadow-sm sticky top-0 z-50 bg-app'>
+ <div className='shadow-sm sticky top-0 z-50 bg-app lg:bg-white'>
        <div className='flex justify-between max-w-6xl mx-5 lg:mx-auto'>
 
         {/**left */}
@@ -55,10 +55,10 @@ const Header = ({user}) => {
 
        {/**modal  using recoil*/}
 
-       <PlusCircleIcon onClick={() => setOpen(true)}  className='h-14 md:hidden cursor-pointer' />
+       <PlusCircleIcon onClick={() => setOpen(true)}  className='h-14 md:h-8 cursor-pointer' />
        <UserGroupIcon className='nav-btn' />
        <HeartIcon className='nav-btn' />
-       <img  src={user.photoURL} alt='profile pic' className='h-8 md:h-10 rounded-full cursor-pointer' />
+       <img    src={user.photoURL ? user.photoURL : "https://cdn-icons-png.flaticon.com/512/6073/6073873.png" } alt='profile pic' className='h-8 md:h-10 rounded-full cursor-pointer' />
     
       
        </div>

@@ -7,6 +7,8 @@ import {
     BookmarkIcon,
     LocationMarkerIcon
 } from '@heroicons/react/outline'
+import { signOut } from 'firebase/auth'
+import { auth } from '../firebase'
 
 const Profile = ({user}) => {
 
@@ -14,12 +16,12 @@ const Profile = ({user}) => {
   return (
     <div className="hidden lg:flex flex-col fixed bg-white w-[17%] h-screen">
         <div className='flex justify-center mx-auto mt-20'>
-            <img src={user.photoURL} alt="profile pic" className='rounded-full p-1 border-red-500 border-2 h-20 w-20 cursor-pointer'/>
+            <img   src={user.photoURL ? user.photoURL : "https://cdn-icons-png.flaticon.com/512/6073/6073873.png" } alt="profile pic" className='rounded-full p-1 border-red-500 border-2 h-20 w-20 cursor-pointer'/>
         </div>
         
          <div className='flex flex-col mt-10'>
-            <h2 className='mx-auto font-bold text-lg'>{user.displayName}</h2>
-            <p className='mx-auto text-gray-400 cursor-pointer'>{user.email}</p>
+            <h2 className='mx-auto font-bold text-lg'>{user.displayName ? user.displayName : "Demo User"}</h2>
+            <p className='mx-auto text-gray-400 cursor-pointer'>{user.email ? user.email : "demouser@hotmail.com"}</p>
          </div>
         
         <div className='flex justify-evenly mt-5'>
@@ -69,7 +71,7 @@ const Profile = ({user}) => {
 
         {/**log out  */}
        <div className='flex justify-center mt-11'>
-       <h2 className='font-bold text-lg text-pink-500 cursor-pointer transition duration-150 hover:scale-110'>Log out</h2>
+       <h2 onClick={() => auth.signOut()} className='font-bold text-lg text-pink-500 cursor-pointer transition duration-150 hover:scale-110'>Log out</h2>
        </div>
     </div>
   )

@@ -5,15 +5,14 @@ const MiniProfile = ({user}) => {
 
  
   return (
-    <div className='flex items-center justify-between mt-14 ml-10'>
-      <img  src={user.photoURL} className=' w-16 h-16 p-[2px] border rounded-full' alt='pic'  />
-
-      <div className='flex-1 mx-4'>
-        <h2 className='font-bold'>{user.displayName}</h2>
-        <h3 className='text-sm text-gray-400'>Welcome to Instagram</h3>
-      </div>
-
-      <button className='text-blue-400'>Sing Out</button>
+    <div className=' rounded-lg items-center justify-between mt-8 mb-10 ml-10 bg-white p-3'>
+      <h2 className='font-bold m-5'>Trending Feeds</h2>
+      <div className='grid grid-cols-2 p-4'>
+          <img   alt="pic" src="/feeds-1.jpg" className="view-img"/>
+          <img   alt="pic" src="/feeds-2.jpg" className="view-img"/>
+          <img   alt="pic" src="/feeds-3.jpg" className="view-img"/>
+          <img   alt="pic" src="/feeds-4.jpg" className="view-img"/>
+        </div>
     </div>
   )
 }

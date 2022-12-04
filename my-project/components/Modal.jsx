@@ -34,9 +34,9 @@ const Modal = () => {
         //upload image firebase storage with post id
         //get download url from fb storage and upload post
         const docRef = await addDoc(collection(db, "posts"), {
-            username: user.displayName,
+            username: user.displayName ? user.displayName : "Demo User",
             caption: captionRef.current.value,
-            profileImg: user.photoURL,
+            profileImg: user.photoURL ? user.photoURL : "https://cdn-icons-png.flaticon.com/512/6073/6073873.png",
             timestamp: serverTimestamp()
         })
 
