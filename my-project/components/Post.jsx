@@ -115,7 +115,7 @@ const Post = ({ id, username, userImg, img, caption}) => {
                 <p className='font-bold -mt-4 mb-4'>{likes.length} Likes</p>
             )}
 
-            <span className='font-bold mr-1'>{user.displayName ? user.displayName : "Demo User"}</span>
+            <span className='font-bold mr-1'>{username ? username : "Demo User"}</span>
             <span>{caption}</span>
         </p>
         {/**comments */}

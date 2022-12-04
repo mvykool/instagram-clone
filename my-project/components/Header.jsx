@@ -26,7 +26,7 @@ const Header = ({user}) => {
        <div className='flex justify-between max-w-6xl mx-5 lg:mx-auto'>
 
         {/**left */}
-          <div className='relative hidden lg:inline-grid w-24 cursor-pointer'>
+          <div className='relative hidden lg:flex w-24 cursor-pointer'>
             <Image onClick={() => router.push("/")} src="https://links.papareact.com/ocw" layout='fill'  objectFit='contain' alt='pic' />
           </div>
 
@@ -56,8 +56,7 @@ const Header = ({user}) => {
        {/**modal  using recoil*/}
 
        <PlusCircleIcon onClick={() => setOpen(true)}  className='h-14 md:h-8 cursor-pointer' />
-       <UserGroupIcon className='nav-btn' />
-       <HeartIcon className='nav-btn' />
+    
        <img    src={user.photoURL ? user.photoURL : "https://cdn-icons-png.flaticon.com/512/6073/6073873.png" } alt='profile pic' className='h-8 md:h-10 rounded-full cursor-pointer' />
     
       
