@@ -47,18 +47,17 @@ const Header = () => {
         {/**right */}
        <div className='flex items-center justify-end space-x-4'> 
        <HomeIcon onClick={() => router.push("/")} cl className='nav-btn' />
-       <MenuIcon className='h-14 md:hidden cursor-pointer' />
 
        {session ? (
      <>
          <div className='relative'>
          <PaperAirplaneIcon className='message-icon' />
-          <div className='absolute bg-red-500 rounded-full animate-pulse -top-1 -right-2 text-xs w-5 h-5 text-white flex items-center justify-center'>3</div>
+          <div className='absolute bg-red-500 rounded-full animate-pulse -top-1 -right-2 text-xs w-5 h-5 text-white flex items-center justify-center'>10</div>
        </div>
 
        {/**modal  using recoil*/}
 
-       <PlusCircleIcon onClick={() => setOpen(true)}  className='nav-btn' />
+       <PlusCircleIcon onClick={() => setOpen(true)}  className='h-14 md:hidden cursor-pointer' />
        <UserGroupIcon className='nav-btn' />
        <HeartIcon className='nav-btn' />
 
