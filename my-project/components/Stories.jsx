@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { faker } from "@faker-js/faker";
 import Story from './Story';
-import { useSession } from 'next-auth/react';
 
 
 
-const Stories = () => {
 
-  const { data: session } = useSession();
+const Stories = ({user}) => {
+
 
   /**generate fake data with faker  */
 
@@ -30,10 +29,10 @@ const Stories = () => {
   return (
     <div className='flex space-x-2 p-6 bg-app rounded-sm overflow-x-scroll' >
       {/**story */}
-      {session && (
+      {user && (
         <Story
-         img={session.user.image}
-        username={session.user.username}
+         img={user.photoURL}
+        username={user.displayName}
         />
       )}
 

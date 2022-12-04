@@ -5,13 +5,16 @@ import { Dialog, Transition } from '@headlessui/react'
 import { CameraIcon } from '@heroicons/react/outline'
 import { storage, db } from '../firebase'
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import { useSession } from 'next-auth/react'
 import { ref, getDownloadURL, uploadString } from 'firebase/storage'
+
+
+import {auth} from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 
 const Modal = () => {
     
-    const { data: session } = useSession();
+    const [user] = useAuthState(auth)
     const [ open, setOpen ] = useRecoilState(modalState);
     const filePickerRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -31,9 +34,9 @@ const Modal = () => {
         //upload image firebase storage with post id
         //get download url from fb storage and upload post
         const docRef = await addDoc(collection(db, "posts"), {
-            username: session.user.username,
+            username: user.displayName,
             caption: captionRef.current.value,
-            profileImg: session.user.image,
+            profileImg: user.photoURL,
             timestamp: serverTimestamp()
         })
 

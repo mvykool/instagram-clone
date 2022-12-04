@@ -7,17 +7,20 @@ import {
     HeartIcon,
     PaperAirplaneIcon,
 } from '@heroicons/react/outline'
-import { useSession } from 'next-auth/react'
 import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, setDoc} from 'firebase/firestore'
 import { db } from '../firebase'
 import  Moment  from 'react-moment'
+
+import {auth} from '../firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import { async } from '@firebase/util'
 
 const Post = ({ id, username, userImg, img, caption}) => {
 
-  const { data: session } = useSession();
+  
+  const [user] = useAuthState(auth)
   const [ comment, setComment] = useState("");
   const [ comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -32,7 +35,7 @@ const Post = ({ id, username, userImg, img, caption}) => {
 
   useEffect(() => {
     setHasLiked(
-        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+        likes.findIndex((like) => like.id === user?.uid) !== -1
     );
   },[likes])
 
@@ -61,10 +64,10 @@ const Post = ({ id, username, userImg, img, caption}) => {
 
   const likePost = async () => {
     if(hasLiked){
-        await deleteDoc(doc(db, "posts", id, "likes", session.user.uid));    
+        await deleteDoc(doc(db, "posts", id, "likes", user.uid));    
     }else {
-        await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
-            username: session.user.username,
+        await setDoc(doc(db, "posts", id, "likes", user.uid), {
+            username: user.displayName,
         });
     }
   };
@@ -72,7 +75,7 @@ const Post = ({ id, username, userImg, img, caption}) => {
 
   return (
     <>
-    { session && (
+    { user && (
         <div className='bg-white my-7 px-5 mx-3 rounded-lg shadow-lg'>
         {/**header */}
 
