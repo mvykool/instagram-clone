@@ -6,9 +6,9 @@ import {
     UserGroupIcon,
     HeartIcon,
     PaperAirplaneIcon,
-    MenuIcon,
+  
 } from '@heroicons/react/outline'
-import { HomeIcon } from '@heroicons/react/solid'
+
 import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
@@ -46,10 +46,8 @@ const Header = ({user}) => {
      </div>
         {/**right */}
        <div className='flex items-center justify-end space-x-4'> 
-       <HomeIcon onClick={() => router.push("/")} cl className='nav-btn' />
 
-       {user ? (
-     <>
+     
          <div className='relative'>
          <PaperAirplaneIcon className='message-icon' />
           <div className='absolute bg-red-500 rounded-full animate-pulse -top-1 -right-2 text-xs w-5 h-5 text-white flex items-center justify-center'>10</div>
@@ -60,13 +58,8 @@ const Header = ({user}) => {
        <PlusCircleIcon onClick={() => setOpen(true)}  className='h-14 md:hidden cursor-pointer' />
        <UserGroupIcon className='nav-btn' />
        <HeartIcon className='nav-btn' />
-       <img   src={user.photoURL} alt='profile pic' className='h-8 md:h-10 rounded-full cursor-pointer' />
-     </>
-
-       ) : (
-        <button >Sign in</button>
-       )}
-
+       <img  src={user.photoURL} alt='profile pic' className='h-8 md:h-10 rounded-full cursor-pointer' />
+    
       
        </div>
     </div>

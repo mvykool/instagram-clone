@@ -5,6 +5,7 @@ import MiniProfile from './MiniProfile'
 import Suggestions from './Suggestions'
 
 
+
 const Feed = ({user}) => {
 
  
@@ -15,6 +16,8 @@ const Feed = ({user}) => {
        <section className='col-span-2'>
          {/**stories */}
          <Stories user={user}/>
+     
+
          {/**posts */}
          <Posts user={user}/>
 

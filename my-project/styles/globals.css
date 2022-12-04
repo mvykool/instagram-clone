@@ -14,6 +14,10 @@
     .message-icon {
         @apply h-6 md:inline-flex cursor-pointer hover:scale-125 transition-all duration-150 ease-out;
     }
+
+    .side-icons {
+        @apply h-8 text-gray-500 hover:border-l-2 pl-10 hover:border-pink-500 transition duration-150 hover:scale-105 cursor-pointer  hover:text-pink-500
+    }
 }
 
 .bg-app{

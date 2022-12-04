@@ -29,7 +29,9 @@ export default function Home() {
 
       {/**profile */}
 
-      <Profile user={user}/>
+     
+     <Profile user={user} />
+    
 
       {/**feed */}
       <Feed user={user} />
